@@ -1,0 +1,79 @@
+
+<nb-card [formGroup]="filterForm">
+  <nb-card-header class="d-flex">
+    <div class="col-lg-3">
+      <input type="text" formControlName="search" nbInput fullWidth placeholder="Search">
+    </div>
+    <div class="col-lg-2">
+      <nb-select formControlName="status">
+        <nb-option value="">ALL</nb-option>
+        <nb-option value="pending">PENDING</nb-option>
+        <nb-option value="done">DONE</nb-option>
+      </nb-select>
+    </div>
+    <div class="col-lg-2">
+      <nb-select formControlName="dateType">
+        <nb-option value="in">IN</nb-option>
+        <nb-option value="out">OUT</nb-option>
+      </nb-select>
+    </div>
+    <div class="col-lg-2">
+      <input
+        nbInput
+        fullWidth
+        formControlName="timeStart"
+        placeholder="TimeStart"
+        [nbDatepicker]="dateTimeStartPicker"
+      />
+      <nb-date-timepicker withSeconds #dateTimeStartPicker></nb-date-timepicker>
+    </div>
+    <div class="col-lg-2">
+      <input
+        nbInput
+        fullWidth
+        formControlName="timeEnd"
+        placeholder="TimeEnd"
+        [nbDatepicker]="dateTimeEndPicker"
+      />
+      <nb-date-timepicker withSeconds #dateTimeEndPicker></nb-date-timepicker>
+    </div>
+  </nb-card-header>
+</nb-card>
+<table mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="STT">
+    <th mat-header-cell *matHeaderCellDef> Số thứ tự </th>
+    <td mat-cell *matCellDef="let element; let i = dataIndex"> {{element.position}}</td>
+  </ng-container>
+  <!-- Position Column -->
+  <ng-container matColumnDef="bienSoXe">
+    <th mat-header-cell *matHeaderCellDef> Biển Số Xe </th>
+    <td mat-cell *matCellDef="let element; let i = dataIndex"> {{element.vehicleCode}}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="vao">
+    <th mat-header-cell *matHeaderCellDef> Thời Gian Vào </th>
+    <td mat-cell *matCellDef="let element; let i = dataIndex">
+      {{element.timeIn | date: 'dd/MM/YYYY h:mm:ss a'}}
+    </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="ra">
+    <th mat-header-cell *matHeaderCellDef> Thời Gian Ra </th>
+    <td mat-cell *matCellDef="let element; let i = dataIndex">
+      {{element.timeOut | date: 'dd/MM/YYYY h:mm:ss a'}}
+    </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="tongThoiGianGui">
+    <th mat-header-cell *matHeaderCellDef> Thời Gian Gửi (Phút) </th>
+    <td mat-cell *matCellDef="let element; let i = dataIndex"> {{element.timeDuration}}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr mat-row *matRowDef="let row;columns: columns; let i = index"
+      [ngClass]="{'even-row': i % 2 === 0}"
+      (click)="viewDetail(row)"></tr>
+</table>

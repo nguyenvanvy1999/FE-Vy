@@ -1,0 +1,16 @@
+:host {
+  height: 100vh;
+  display: block;
+}
+
+nb-card, nb-card-body {
+  height: 100%;
+}
+::ng-deep qrcode {
+  height: 100vh;
+  .qrcode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

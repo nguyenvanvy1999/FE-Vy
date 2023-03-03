@@ -1,0 +1,32 @@
+<nb-layout>
+  <nb-layout-column>
+    <nb-card>
+      <nb-card-header>Vehicle Statistic</nb-card-header>
+      <nb-card-body>
+        <div class="d-flex align-items-center justify-content-between" [formGroup]="filterForm">
+          <div class="col-lg-6">
+            <input
+              nbInput
+              fullWidth
+              formControlName="timeStart"
+              placeholder="TimeStart"
+              [nbDatepicker]="dateTimeStartPicker"
+            />
+            <nb-date-timepicker withSeconds #dateTimeStartPicker></nb-date-timepicker>
+          </div>
+          <div class="col-lg-6">
+            <input
+              nbInput
+              fullWidth
+              formControlName="timeEnd"
+              placeholder="TimeEnd"
+              [nbDatepicker]="dateTimeEndPicker"
+            />
+            <nb-date-timepicker withSeconds #dateTimeEndPicker></nb-date-timepicker>
+          </div>
+        </div>
+        <chart type="bar" [data]="data" [options]="options"></chart>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>

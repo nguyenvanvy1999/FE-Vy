@@ -1,0 +1,23 @@
+<nb-card>
+  <nb-card-header>
+    <button (click)="back()" nbButton ghost>
+      <nb-icon [icon]="'arrow-back'" pack="eva"></nb-icon>
+    </button>
+    {{item?.vehicleCode}}
+  </nb-card-header>
+  <nb-card-body>
+    <div class="d-flex">
+      <div class="col-lg-6">
+        <div>Vào</div>
+        <img width="100%" height="100%" src="{{item?.imageIn}}"/>
+        <div>{{item?.timeIn | date: 'dd/MM/YYYY h:mm:ss a'}}</div>
+      </div>
+      <div class="col-lg-6" *ngIf="item?.imageOut && item?.timeOut">
+        <div>Ra</div>
+        <img width="100%" height="100%" src="{{item?.imageOut}}"/>
+        <div>{{item?.timeOut | date: 'dd/MM/YYYY h:mm:ss a'}}</div>
+      </div>
+      <div></div>
+    </div>
+  </nb-card-body>
+</nb-card>

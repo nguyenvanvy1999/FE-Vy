@@ -1,0 +1,60 @@
+<nb-layout>
+  <nb-layout-column>
+    <nb-card>
+      <nb-card-header>Cổng Vào</nb-card-header>
+      <nb-card-body *ngIf="dataIn">
+        <button
+          fullWidth
+          nbButton [status]="doorStatus.inOpen ? 'danger' : 'primary'"
+          (click)="changeDoorStatus('IN', !doorStatus.inOpen)"
+        >
+          {{doorStatus.inOpen ? 'Đóng' : 'Mở'}} cửa vào
+        </button>
+        <img [src]="dataIn.imageIn"/>
+        <h1 fullWidth>{{dataIn.timeIn | date: 'dd/MM/YYYY h:mm:ss a'}}</h1>
+      </nb-card-body>
+      <nb-card-body *ngIf="!dataIn">
+        <button
+          fullWidth
+          nbButton [status]="doorStatus.inOpen ? 'danger' : 'primary'"
+          (click)="changeDoorStatus('IN', !doorStatus.inOpen)"
+        >
+          {{doorStatus.inOpen ? 'Đóng' : 'Mở'}} cửa vào
+        </button>
+        Không có xe vào
+      </nb-card-body>
+      <nb-card-footer>
+      </nb-card-footer>
+    </nb-card>
+  </nb-layout-column>
+
+  <nb-layout-column>
+    <nb-card>
+      <nb-card-header>Cổng Ra</nb-card-header>
+      <nb-card-body *ngIf="dataOut">
+        <button
+          fullWidth
+          nbButton [status]="doorStatus.outOpen ? 'danger' : 'primary'"
+          (click)="changeDoorStatus('OUT', !doorStatus.outOpen)"
+        >
+          {{doorStatus.outOpen ? 'Đóng' : 'Mở'}} cửa ra
+        </button>
+        <img [src]="dataOut.imageOut"/>
+        <h1 fullWidth>{{dataOut.timeOut | date: 'dd/MM/YYYY h:mm:ss a'}}</h1>
+      </nb-card-body>
+      <nb-card-body *ngIf="!dataOut">
+        <button
+          fullWidth
+          nbButton [status]="doorStatus.outOpen ? 'danger' : 'primary'"
+          (click)="changeDoorStatus('OUT', !doorStatus.outOpen)"
+        >
+          {{doorStatus.outOpen ? 'Đóng' : 'Mở'}} cửa ra
+        </button>
+        Không có xe ra
+      </nb-card-body>
+      <nb-card-footer>
+
+      </nb-card-footer>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>

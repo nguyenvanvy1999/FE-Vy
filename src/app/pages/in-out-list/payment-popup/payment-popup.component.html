@@ -1,0 +1,22 @@
+<nb-card>
+  <nb-card-header>{{ title }}</nb-card-header>
+  <nb-card-body class="d-flex flex-column">
+    <nb-card-body class="d-flex justify-content-between align-items-center">
+      <nb-card-body>
+        <img width="100" height="100" src="/assets/images/qrcode.png">
+      </nb-card-body>
+      <nb-card-body>
+        <div width="100" height="100">100000</div>
+      </nb-card-body>
+    </nb-card-body>
+    <div class="d-flex justify-content-between align-items-center">
+      <nb-card-body>
+        <div>Payment by QR Code</div>
+      </nb-card-body>
+      <nb-card-body>
+        <div>Payment by Cash</div>
+      </nb-card-body>
+    </div>
+  </nb-card-body>
+  <button nbButton hero status="primary" (click)="dismiss()">Done</button>
+</nb-card>
